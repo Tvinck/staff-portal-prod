@@ -129,7 +129,7 @@ const Finance = () => {
   );
 
   const formatCurrency = (val) =>
-    new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(val);
+    new Intl.NumberFormat('ru-RU', { style: 'currency', currency: 'RUB', maximumFractionDigits: 0 }).format(val);
 
   return (
     <div className="finance-module">
@@ -262,7 +262,7 @@ const Finance = () => {
           </select>
         </div>
         <div className="form-group">
-          <label>Сумма (USD)</label>
+          <label>Сумма (₽)</label>
           <input type="number" step="0.01" value={formData.amount} onChange={(e) => setFormData({...formData, amount: e.target.value})} placeholder="0.00" />
         </div>
         <div className="form-group">
