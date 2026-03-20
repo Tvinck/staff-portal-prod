@@ -23,8 +23,10 @@ import Finance from './pages/finance/Finance';
 import News from './pages/news/News';
 import SupportChats from './pages/support/SupportChats';
 import TMQPage from './pages/support/TMQPage';
+import Monitoring from './pages/monitoring/Monitoring';
 import Login from './pages/auth/Login';
 import { supabase } from './utils/supabase';
+import useAnalytics from './hooks/useAnalytics';
 
 // Pages - Dashboard moved to its own file
 
@@ -32,6 +34,8 @@ const AppContent = () => {
   const [session, setSession] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
   const location = useLocation();
+  
+  useAnalytics('staff-portal');
 
   React.useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -79,6 +83,7 @@ const AppContent = () => {
       case '/settings': return 'Интеграции и автоматизация';
       case '/chats': return 'Центр поддержки клиентов';
       case '/tmq': return 'Контроль качества (TMQ)';
+      case '/monitoring': return 'Системный мониторинг';
       default: return 'Стафф Портал';
     }
   };
@@ -109,6 +114,7 @@ const AppContent = () => {
             <Route path="/settings" element={<PachkaSettings />} />
             <Route path="/chats" element={<SupportChats />} />
             <Route path="/tmq" element={<TMQPage />} />
+            <Route path="/monitoring" element={<Monitoring />} />
           </Routes>
         </main>
       </div>

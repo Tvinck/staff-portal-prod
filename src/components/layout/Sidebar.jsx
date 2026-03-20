@@ -20,7 +20,8 @@ import {
   Truck,
   Newspaper,
   MessageSquare,
-  ShieldCheck
+  ShieldCheck,
+  Activity
 } from 'lucide-react';
 import './Sidebar.css';
 
@@ -30,6 +31,7 @@ const Sidebar = () => {
       title: 'Главное',
       items: [
         { path: '/', icon: LayoutDashboard, label: 'Дашборд' },
+        { path: '/monitoring', icon: Activity, label: 'Мониторинг' },
         { path: '/news', icon: Newspaper, label: 'Новости' },
         { path: '/finance', icon: CircleDollarSign, label: 'Финансы' }
       ]
