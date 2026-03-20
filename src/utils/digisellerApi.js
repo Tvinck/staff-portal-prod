@@ -60,5 +60,32 @@ export const getDigisellerSells = async (token, rows = 50) => {
   }
 };
 
-// There is no direct "balance" endpoint in the public documentation sometimes without detailed queries, 
-// so we'll fetch account receipts if needed. Let's start with getting basic data.
+export const getDigisellerGoods = async (token, rows = 50) => {
+  try {
+    const seller_id = Number(import.meta.env.VITE_DIGISELLER_ID);
+    
+    const response = await fetch(`https://api.digiseller.ru/api/seller-goods?token=${token}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({ 
+        id_seller: seller_id, 
+        rows,
+        page: 1,
+        // Using common defaults for full list
+        order_col: "name",
+        order_dir: "asc"
+      })
+    });
+    
+    const data = await response.json();
+    if (data.retval !== 0 && data.retval !== undefined) throw new Error(data.desc);
+    return data;
+  } catch (error) {
+    console.error("Digiseller Goods Error:", error);
+    throw error;
+  }
+};
+
