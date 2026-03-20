@@ -46,6 +46,7 @@ const Sidebar = () => {
       items: [
         { path: '/marketplaces', icon: Store, label: 'Яндекс Маркет' },
         { path: '/marketplaces/ggsel', icon: Gamepad2, label: 'GGSEL' },
+        { path: '/marketplaces/digiseller', icon: Store, label: 'Digiseller' },
       ]
     },
     {

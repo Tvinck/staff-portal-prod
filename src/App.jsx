@@ -10,6 +10,7 @@ import PixelManager from './pages/pixel/PixelManager';
 import MarketManager from './pages/market/MarketManager';
 import Marketplaces from './pages/marketplaces/YandexMarket';
 import GGSel from './pages/marketplaces/GGSel';
+import Digiseller from './pages/marketplaces/Digiseller';
 import Wiki from './pages/workspace/Wiki';
 import Kanban from './pages/workspace/Kanban';
 import PachkaSettings from './pages/settings/PachkaSettings';
@@ -66,6 +67,7 @@ const AppContent = () => {
       case '/market': return 'Администрирование Bazzar Market';
       case '/marketplaces': return 'Яндекс Маркет';
       case '/marketplaces/ggsel': return 'GGSEL Marketplace';
+      case '/marketplaces/digiseller': return 'Digiseller';
       case '/marketplaces/desslyhub': return 'DesslyHub API';
       case '/suppliers/desslyhub': return 'DesslyHub — Поставщик';
       case '/wiki': return 'База знаний';
@@ -95,6 +97,7 @@ const AppContent = () => {
             <Route path="/market" element={<MarketManager />} />
             <Route path="/marketplaces" element={<Marketplaces />} />
             <Route path="/marketplaces/ggsel" element={<GGSel />} />
+            <Route path="/marketplaces/digiseller" element={<Digiseller />} />
             <Route path="/marketplaces/desslyhub" element={<DesslyHub />} />
             <Route path="/suppliers/desslyhub" element={<DesslyHub />} />
             <Route path="/wiki" element={<Wiki />} />
