@@ -3,7 +3,6 @@ import {
   Store, RefreshCw, ShoppingCart, TrendingUp, AlertCircle, Package, Database, Tag, Search
 } from 'lucide-react';
 import { getDigisellerToken, getDigisellerSells, getDigisellerGoods } from '../../utils/digisellerApi';
-import './marketplaces.css';
 
 const Digiseller = () => {
   const [sales, setSales] = useState([]);
