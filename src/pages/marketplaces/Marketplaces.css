@@ -1,0 +1,258 @@
+/* Marketplaces.css — Ultra Premium Liquid Glass Theme */
+/* Note: Global tokens are defined in index.css. This file adds marketplace-specific premium effects. */
+
+/* Glass Premium Components */
+.pro-glass-theme {
+  padding: 2rem;
+  color: var(--text-primary);
+  min-height: 100vh;
+  position: relative;
+  font-family: var(--font-main);
+  overflow-x: hidden;
+}
+
+/* Morphing Background Glow */
+.bg-glow {
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  filter: blur(120px);
+  z-index: -1;
+  opacity: 0.25;
+  pointer-events: none;
+  animation: morph 14s infinite alternate var(--ease-out);
+}
+
+@keyframes morph {
+  0% { transform: translate(0, 0) scale(1); border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  50% { transform: translate(80px, 40px) scale(1.05); border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+  100% { transform: translate(-40px, 80px) scale(0.95); border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+}
+
+.bg-glow.blue {
+  top: -150px;
+  right: -100px;
+  background: radial-gradient(circle, var(--accent), transparent);
+}
+
+.bg-glow.purple {
+  bottom: -150px;
+  left: -100px;
+  background: radial-gradient(circle, var(--accent-purple), transparent);
+  animation-delay: -5s;
+}
+
+/* Glass Premium */
+.glass-premium {
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(25px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  transition: border-color var(--duration-slow) var(--ease-out);
+}
+
+.glass-premium:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Luxury Border Gradient */
+.luxury-border {
+  position: relative;
+}
+
+.luxury-border::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.08), transparent, rgba(255,255,255,0.04));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Brand Header */
+.brand-titles h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.logo-hex.ggsel {
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  transition: transform 0.6s var(--ease-spring);
+}
+
+.logo-hex.ggsel:hover {
+  transform: rotate(360deg);
+}
+
+/* Metric Cards */
+.header-metrics {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  max-width: 700px;
+}
+
+.metric-box {
+  background: rgba(30, 41, 59, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 1.25rem 2rem;
+  border-radius: var(--radius-xl);
+  position: relative;
+  overflow: hidden;
+  min-width: 240px;
+  flex: 1;
+}
+
+.metric-box::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.02) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Premium Tabs */
+.luxury-tab-bar {
+  background: rgba(15, 23, 42, 0.3);
+  padding: 5px;
+  border-radius: 18px;
+  display: inline-flex;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.luxury-tab-item {
+  border-radius: 14px;
+  padding: 0.7rem 1.5rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.01em;
+  border: none;
+  background: transparent;
+  color: var(--text-dim);
+  font-weight: 500;
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.luxury-tab-item:hover {
+  color: var(--text-secondary);
+}
+
+.luxury-tab-item.active {
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Premium Table */
+.modern-table-card {
+  overflow: hidden;
+  padding: 1.25rem;
+}
+
+.luxury-table {
+  border-spacing: 0 10px;
+}
+
+.luxury-table th {
+  padding: 0.8rem 1.5rem;
+  font-weight: 700;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.3px;
+}
+
+.luxury-table td {
+  background: rgba(255, 255, 255, 0.025);
+  padding: 1.2rem 1.5rem;
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.luxury-table td:first-child { border-radius: 16px 0 0 16px; }
+.luxury-table td:last-child { border-radius: 0 16px 16px 0; }
+
+.luxury-table tr:hover td {
+  background: rgba(255, 255, 255, 0.055);
+}
+
+/* Glass Search */
+.glass-search {
+  background: rgba(15, 23, 42, 0.3);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 0.6rem 1.25rem;
+  gap: 0.75rem;
+  flex: 1;
+  max-width: 380px;
+  display: flex;
+  align-items: center;
+}
+
+.glass-search input {
+  font-size: 0.9rem;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  width: 100%;
+  outline: none;
+}
+
+.glass-search input::placeholder {
+  color: var(--text-dim);
+}
+
+/* Badge Refinements */
+.pro-badge {
+  padding: 5px 12px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* Marketplace-specific buttons */
+.btn-refresh-luxury {
+  border-radius: 14px;
+  padding: 0.8rem 1.5rem;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.btn-update-config {
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+}
+
+/* Ensure inputs in glass containers are full-width */
+.glass-premium textarea, 
+.glass-premium input,
+.glass-premium select {
+  width: 100% !important;
+  box-sizing: border-box;
+}
+
+/* Mono/code utilities */
+.mono-blue, .mono {
+  font-family: var(--font-mono);
+}
+
+.mono-blue {
+  color: var(--accent);
+}

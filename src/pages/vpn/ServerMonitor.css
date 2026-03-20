@@ -1,0 +1,131 @@
+/* VPN Server Monitor — Page-specific styles only */
+
+.vpn-monitor {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.monitor-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 20px;
+}
+
+/* Server nodes */
+.servers-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.server-item {
+  padding: 16px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: border-color var(--duration-normal) var(--ease-out);
+}
+
+.server-item:hover {
+  border-color: var(--card-hover-border);
+}
+
+.server-item.offline {
+  opacity: 0.5;
+}
+
+.server-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.server-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.server-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.server-type {
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+/* Load bar */
+.load-bar-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.load-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.load-bar {
+  height: 5px;
+  background: var(--bg-primary);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.load-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.6s var(--ease-out);
+}
+
+/* User sessions table */
+.user-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.user-circle {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--success);
+  box-shadow: 0 0 6px var(--success);
+}
+
+.node-tag {
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  padding: 2px 8px;
+  border-radius: var(--radius-xs);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+/* Stat footer (used by Pixel stats too) */
+.stat-footer {
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.stat-footer.success { color: var(--success); }
+
+@media (max-width: 1024px) {
+  .monitor-grid {
+    grid-template-columns: 1fr;
+  }
+}

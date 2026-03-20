@@ -1,0 +1,112 @@
+/* Finance Module */
+
+.finance-module {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.finance-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.finance-card {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.card-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.card-icon.balance { background: rgba(0, 209, 255, 0.1); color: #00d1ff; }
+.card-icon.income { background: rgba(52, 211, 153, 0.1); color: #34d399; }
+.card-icon.expense { background: rgba(248, 113, 113, 0.1); color: #f87171; }
+
+.card-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.card-label {
+  font-size: 11px;
+  color: var(--text-dim);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.card-value {
+  margin: 4px 0 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Project pill tags */
+.project-pill {
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+
+.project-pill.zent_vpn { background: rgba(0, 209, 255, 0.1); color: #00d1ff; }
+.project-pill.bazzar_market { background: rgba(255, 215, 0, 0.1); color: #ffd700; }
+.project-pill.pixel_ai { background: rgba(168, 85, 247, 0.1); color: #a855f7; }
+.project-pill.internal { background: rgba(255, 255, 255, 0.06); color: var(--text-secondary); }
+
+/* Amounts */
+.amount-cell {
+  font-weight: 700;
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+.amount-cell.income { color: #34d399; }
+.amount-cell.expense { color: #f87171; }
+
+/* Date cell */
+.date-cell .date-text {
+  color: var(--text-primary);
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.date-cell .time-text {
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+.description-cell {
+  color: var(--text-dim);
+  font-size: 13px;
+  max-width: 280px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.category-cell {
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+  .finance-stats-grid {
+    grid-template-columns: 1fr;
+  }
+}

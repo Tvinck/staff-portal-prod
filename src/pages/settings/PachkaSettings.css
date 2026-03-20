@@ -1,0 +1,96 @@
+/* Pachka Settings — Page-specific styles only */
+
+.pachka-settings {
+  max-width: 800px;
+}
+
+.pachka-settings .description {
+  color: var(--text-dim);
+  font-size: 14px;
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+
+.webhook-setup-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.webhook-item {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: border-color var(--duration-normal) var(--ease-out);
+}
+
+.webhook-item:hover {
+  border-color: var(--card-hover-border);
+}
+
+.webhook-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.icon-box {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.icon-box.tech { background: rgba(59, 130, 246, 0.1); color: var(--accent); }
+.icon-box.finance { background: rgba(16, 185, 129, 0.1); color: var(--success); }
+.icon-box.client { background: rgba(168, 85, 247, 0.1); color: #c084fc; }
+
+.webhook-info h3 {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0 0 2px 0;
+  color: var(--text-primary);
+}
+
+.webhook-info p {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin: 0;
+}
+
+.webhook-inputs {
+  display: flex;
+  gap: 10px;
+}
+
+.webhook-inputs input {
+  flex: 1;
+}
+
+/* Test button states */
+.btn-small.ghost.success {
+  border-color: var(--success);
+  color: var(--success);
+}
+
+.btn-small.ghost.error {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+.btn-small.ghost.sending {
+  opacity: 0.6;
+}
+
+@media (max-width: 600px) {
+  .webhook-inputs {
+    flex-direction: column;
+  }
+}

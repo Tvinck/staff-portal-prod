@@ -1,0 +1,342 @@
+.tmq-container {
+  padding: 24px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.tmq-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tmq-header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.tmq-stats {
+  display: flex;
+  gap: 16px;
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 12px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+}
+
+.tmq-content {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.tmq-filters {
+  padding: 16px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.01);
+}
+
+.filter-input {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 8px 12px;
+  color: white;
+  font-size: 0.9rem;
+}
+
+.tmq-table-wrapper {
+  overflow-x: auto;
+}
+
+.tmq-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.tmq-table th {
+  padding: 16px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--border-color);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.tmq-table td {
+  padding: 16px;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.9rem;
+}
+
+.tmq-table tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.client-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.client-avatar {
+  width: 32px;
+  height: 32px;
+  background: var(--bg-secondary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: var(--accent-primary);
+}
+
+.client-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.client-name {
+  font-weight: 600;
+}
+
+.client-handle {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+.rating-stars {
+  display: flex;
+  gap: 2px;
+  color: #ffb800;
+}
+
+.rating-empty {
+  color: var(--text-dim);
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
+.actions-cell {
+  display: flex;
+  gap: 8px;
+}
+
+.action-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 6px 10px;
+  color: white;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.action-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--accent-primary);
+}
+
+.action-btn.primary {
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+}
+
+/* Quick View Modal */
+.qv-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.qv-modal {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  width: 90%;
+  max-width: 800px;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+}
+
+.qv-header {
+  padding: 20px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.qv-body {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.qv-messages {
+  flex: 2;
+  padding: 20px;
+  overflow-y: auto;
+  background: rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.qv-message {
+  max-width: 80%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+}
+
+.qv-message.user {
+  align-self: flex-start;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+}
+
+.qv-message.staff {
+  align-self: flex-end;
+  background: var(--accent-primary);
+  color: white;
+}
+
+.qv-eval-panel {
+  flex: 1;
+  padding: 20px;
+  border-left: 1px solid var(--border-color);
+  background: rgba(255,255,255,0.01);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.eval-form h3 {
+  margin: 0 0 12px;
+  font-size: 1rem;
+}
+
+.eval-stars-input {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.star-input {
+  cursor: pointer;
+  color: var(--text-dim);
+  transition: all 0.2s;
+}
+
+.star-input.active {
+  color: #ffb800;
+  transform: scale(1.1);
+}
+
+.eval-textarea {
+  width: 100%;
+  min-height: 120px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 10px;
+  color: white;
+  resize: none;
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+}
+
+.save-eval-btn {
+  width: 100%;
+  background: var(--accent-primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.save-eval-btn:hover {
+  filter: brightness(1.1);
+}
+
+.close-modal-btn {
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  cursor: pointer;
+}
+
+.close-modal-btn:hover {
+  color: white;
+}
+
+.user-feedback-box {
+  margin-top: 10px;
+  background: rgba(255, 184, 0, 0.05);
+  border-left: 3px solid #ffb800;
+  padding: 12px;
+  border-radius: 4px 8px 8px 4px;
+}
+
+.user-feedback-box h3 {
+  margin: 0 0 6px;
+  font-size: 0.85rem;
+  color: #ffb800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.user-feedback-box p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: white;
+}

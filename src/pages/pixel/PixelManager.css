@@ -1,0 +1,127 @@
+/* Pixel AI Bot Manager — Page-specific styles only */
+
+.pixel-manager {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Stat header and footer (Pixel uses .stat-header, .stat-icon inside stat-card) */
+.pixel-manager .stat-card {
+  flex-direction: column;
+  gap: 12px;
+}
+
+.stat-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.stat-icon {
+  color: var(--accent);
+}
+
+.stat-header .stat-label {
+  font-size: 12px;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+
+.pixel-manager .stat-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Analytics - generation type tags */
+.type-tag {
+  padding: 3px 8px;
+  border-radius: var(--radius-xs);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.type-tag.image { background: rgba(59, 130, 246, 0.1); color: #60a5fa; }
+.type-tag.video { background: rgba(168, 85, 247, 0.1); color: #c084fc; }
+.type-tag.audio { background: rgba(234, 179, 8, 0.1); color: #fbbf24; }
+
+.model-tag {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+/* Pricing grid */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 12px;
+}
+
+.pricing-item {
+  padding: 16px 20px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: border-color var(--duration-normal) var(--ease-out);
+}
+
+.pricing-item:hover {
+  border-color: var(--card-hover-border);
+}
+
+.pricing-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.pricing-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.pricing-model {
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.pricing-control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.price-input {
+  width: 60px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 6px;
+  color: var(--text-primary);
+  text-align: center;
+  font-weight: 600;
+  font-family: var(--font-mono);
+}
+
+.token-label {
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+/* Broadcast form */
+.broadcast-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 600px;
+}
