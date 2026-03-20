@@ -61,14 +61,15 @@ const MarketManager = () => {
 };
 
 /* ===== MODAL FOR PRODUCT EDIT ===== */
-const EditProductModal = ({ product, isOpen, onClose, onSave }) => {
+const EditProductModal = ({ product, isOpen, onClose, onSave, sharedAccounts = [] }) => {
   const [formData, setFormData] = useState({
     name: '',
     category: '',
     price: 0,
     stock: 0,
     delivery_url: '',
-    instruction: ''
+    instruction: '',
+    account_id: ''
   });
 
   useEffect(() => {
@@ -79,7 +80,8 @@ const EditProductModal = ({ product, isOpen, onClose, onSave }) => {
         price: product.price || 0,
         stock: product.stock || 0,
         delivery_url: product.data?.delivery_url || '',
-        instruction: product.data?.instruction || ''
+        instruction: product.data?.instruction || '',
+        account_id: product.data?.account_id || ''
       });
     }
   }, [product]);
@@ -128,7 +130,22 @@ const EditProductModal = ({ product, isOpen, onClose, onSave }) => {
               value={formData.delivery_url} 
               onChange={e => setFormData({...formData, delivery_url: e.target.value})} 
             />
-            <small>Клиент получит эту ссылку после оплаты</small>
+            <small>Клиент получит эту ссылку после оплаты (для ключей)</small>
+          </div>
+          <div className="form-group">
+            <label>Привязанный общий аккаунт (для Apple ID/Игр)</label>
+            <select 
+              value={formData.account_id} 
+              onChange={e => setFormData({...formData, account_id: e.target.value})}
+            >
+              <option value="">-- Без привязки (продажа ключей/ссылок) --</option>
+              {sharedAccounts.map(acc => (
+                <option key={acc.id} value={acc.id}>
+                  {acc.name} ({acc.credentials?.email})
+                </option>
+              ))}
+            </select>
+            <small>При выборе аккаунта логин и пароль будут выдаваться автоматически из базы</small>
           </div>
           <div className="form-group">
             <label>Инструкция</label>
@@ -155,33 +172,43 @@ const CatalogTab = () => {
   const [search, setSearch] = useState('');
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [sharedAccounts, setSharedAccounts] = useState([]);
 
-  const fetchProducts = useCallback(async () => {
+  const fetchProductsAndAccounts = useCallback(async () => {
     setLoading(true);
-    const { data, error } = await supabase
+    
+    // Fetch products
+    const { data: productsData, error: productsError } = await supabase
       .from('market_catalog')
       .select('*')
       .order('category')
       .order('created_at', { ascending: false });
 
-    if (!error && data) setProducts(data);
+    // Fetch shared accounts
+    const { data: accountsData } = await supabase
+      .from('shared_accounts')
+      .select('id, name, credentials');
+
+    if (!productsError && productsData) setProducts(productsData);
+    if (accountsData) setSharedAccounts(accountsData);
+    
     setLoading(false);
   }, []);
 
-  useEffect(() => { fetchProducts(); }, [fetchProducts]);
+  useEffect(() => { fetchProductsAndAccounts(); }, [fetchProductsAndAccounts]);
 
   const toggleActive = async (id, currentState) => {
     await supabase
       .from('market_catalog')
       .update({ is_active: !currentState })
       .eq('id', id);
-    fetchProducts();
+    fetchProductsAndAccounts();
   };
 
   const deleteProduct = async (id) => {
     if (!window.confirm('Удалить этот товар?')) return;
     await supabase.from('market_catalog').delete().eq('id', id);
-    fetchProducts();
+    fetchProductsAndAccounts();
   };
 
   const openEdit = (product) => {
@@ -199,7 +226,8 @@ const CatalogTab = () => {
         data: {
           ...(selectedProduct.data || {}),
           delivery_url: formData.delivery_url,
-          instruction: formData.instruction
+          instruction: formData.instruction,
+          account_id: formData.account_id || null
         }
       })
       .eq('id', selectedProduct.id);
@@ -208,7 +236,7 @@ const CatalogTab = () => {
       alert('Ошибка сохранения: ' + error.message);
     } else {
       setIsEditModalOpen(false);
-      fetchProducts();
+      fetchProductsAndAccounts();
     }
   };
 
@@ -231,7 +259,7 @@ const CatalogTab = () => {
           />
         </div>
         <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-          <button className="btn-small flex-center gap-2" onClick={fetchProducts}>
+          <button className="btn-small flex-center gap-2" onClick={fetchProductsAndAccounts}>
             <RefreshCcw size={16} />
             Обновить
           </button>
@@ -316,6 +344,7 @@ const CatalogTab = () => {
         isOpen={isEditModalOpen}
         onClose={() => setIsEditModalOpen(false)}
         onSave={handleSaveProduct}
+        sharedAccounts={sharedAccounts}
       />
     </section>
   );
